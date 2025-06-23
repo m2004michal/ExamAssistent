@@ -50,3 +50,30 @@ Zwraca:
   "question": "Jak zarejestrować spółkę cywilną?",
   "results": "Uzyskanie wpisu w CEIDG...\n\nZawarcie umowy spółki cywilnej..."
 }
+
+3. GET /prompt
+
+Opis: Odpowiedź generowana przez GPT-4o na podstawie kontekstu
+Parametry:
+
+    q: pytanie użytkownika (string)
+
+    top_k: liczba głównych trafień do rozszerzenia o sąsiadów (default: 6)
+
+Zachowanie:
+
+    Zapytanie semantyczne do FAISS (top 10)
+
+    Filtrowanie wyników wg progu threshold = 0.75
+
+    Dołączenie ±10 sąsiednich chunków do każdego trafienia
+
+    Sklejony kontekst trafia do prompta dla GPT-4o
+
+    Zwracana jest wygenerowana odpowiedź
+
+Zwraca:
+
+{
+  "answer": "Aby zarejestrować spółkę cywilną, należy: 1) Uzyskać wpis w CEIDG, 2) Zawrzeć umowę na piśmie..."
+}
